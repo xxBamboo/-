@@ -1,0 +1,34 @@
+# Project: puzzle 4.1
+# Makefile created by Red Panda Dev-C++ beta.0.9.0
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = puzzle_4_private.res
+OBJ      = main.o $(RES)
+LINKOBJ  = main.o $(RES)
+CLEANOBJ  =  main.o $(RES)
+LIBS     =  -mwindows -lgraphics -luuid -lmsimg32 -lgdi32 -limm32 -lole32 -loleaut32 -lwinmm -lgdiplus  
+INCS     =  
+CXXINCS  =  
+BIN      = "puzzle 4.1.exe"
+CXXFLAGS = $(CXXINCS)  -Wall -Wextra -g3 -pipe -D__DEBUG__
+CFLAGS   = $(INCS)  -Wall -Wextra -g3 -pipe -D__DEBUG__
+RM       = del /q /f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(CLEANOBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c "D:/JXX/C++/homework/puzzle 4.1/main.cpp" -o main.o $(CXXFLAGS)  -finput-charset=gbk -fexec-charset=gbk
+
+puzzle_4_private.res: puzzle_4_private.rc 
+	$(WINDRES) -i puzzle_4_private.rc --input-format=rc -o puzzle_4_private.res -O coff 
+
